@@ -43,11 +43,11 @@ void USART2_IRQHandler(void)
 						case 0xE0:PID_VELO.Kp = (float)rx_data;break;
 						case 0xE1:PID_VELO.Ki = (float)rx_data;break;
 						case 0xE2:PID_VELO.Kd = (float)rx_data;break;
-						case 0xE3:PID_TURN.Kp = (float)rx_data;break;
-						case 0xE4:PID_TURN.Ki = (float)rx_data;break;
-						case 0xE5:PID_TURN.Kd = (float)rx_data;break;
-						case 0xE6:PID_VELO.set_point = (float)rx_data;break;
-						case 0xE7:PID_TURN.set_point = (float)rx_data;break;
+						case 0xE3:PID_TILT.Kp = (float)rx_data;break;
+						case 0xE4:PID_TILT.Ki = (float)rx_data;break;
+						case 0xE5:PID_TILT.Kd = (float)rx_data;break;
+						case 0xE6:setspeed = (float)rx_data;break;
+						case 0xE7:setpoint = (float)rx_data;break;
 					}
 				}
 			}
@@ -77,8 +77,8 @@ void SEND_UART (uint16_t time)
 		
 		SENDDATA(PID_VELO.set_point,txbuffer,0);
 		SENDDATA(PID_VELO.feedback,txbuffer,1);
-		SENDDATA(PID_TURN.set_point,txbuffer,2);
-		SENDDATA(PID_TURN.feedback,txbuffer,3);
+		SENDDATA(PID_TILT.set_point,txbuffer,2);
+		SENDDATA(PID_TILT.feedback,txbuffer,3);
 		SENDDATA(Left_motor.U0_100,txbuffer,4);
 	}
 }
@@ -106,32 +106,45 @@ void MAIN_PROG (uint16_t time)
 		//Pitch
 		/* Complementary filter*/
 		Pitch.raw = (0.98f * (Pitch.raw - MPU6050_Data0.Gyroscope_Y * dt)) + (0.02f * (atan2f(MPU6050_Data0.Accelerometer_X, MPU6050_Data0.Accelerometer_Z) * 180.0f/PI));
-		Smooth_filter (Pitch.raw,Pitch.filted_theta,0.34);
+		Smooth_filter (Pitch.raw,Pitch.filted_theta,0.25);
 		PID_TILT.feedback = Pitch.filted_theta[0] - Pitch.theta_offset;
 		
 		//Yaw
-		Yaw.raw = - MPU6050_Data0.Gyroscope_Z;
-		/* HighPass filter*/
-		Yaw.filted_theta[0] = HPF(Yaw.raw,10,f_s);
-		PID_TURN.feedback = Yaw.filted_theta[0] - Yaw.theta_offset;
+//		Yaw.raw = - MPU6050_Data0.Gyroscope_Z;
+//		/* HighPass filter*/
+//		Yaw.filted_theta[0] = HPF(Yaw.raw,10,f_s);
+//		PID_TURN.feedback = Yaw.filted_theta[0] - Yaw.theta_offset;
 		
 	
 		
 		if ((PID_TILT.feedback < 45) && (PID_TILT.feedback > -45))
 		{
+			//Preprocessing
+			if ((setspeed-PID_VELO.set_point) > 0)
+			{
+				PID_VELO.set_point += 0.5f;
+			}
+			
+			if ((setspeed-PID_VELO.set_point) < 0)
+			{
+				PID_VELO.set_point -= 0.5f;
+			}
+		
 			//PID VELOCITY
-			PID (&PID_VELO,0.12);
+			PID (&PID_VELO,0.34);
 			PID_TILT.set_point = -PID_VELO.filted_U[0] * MAX_TILT;
 		
 			//PID TILTING	
-			PID (&PID_TILT,0.12);
+			PID (&PID_TILT,0.36);
 		
-			//PID Turning	
-			PID (&PID_TURN,0.12);
+			//Turning	
+			//PID (&PID_TURN,0.12);
+			U_offset = -setpoint*TURN_OFFSET;
+			
 			
 			//FUSION 
-			Left_motor.PWM  = PID_TILT.filted_U[0] + PID_TURN.filted_U[0];
-			Right_motor.PWM = PID_TILT.filted_U[0] - PID_TURN.filted_U[0];
+			Left_motor.PWM  = PID_TILT.filted_U[0] + U_offset;
+			Right_motor.PWM = PID_TILT.filted_U[0] - U_offset;
 				
 			//PWM section
 			PWM (&Left_motor);
@@ -147,10 +160,12 @@ void MAIN_PROG (uint16_t time)
 			GPIO_ResetBits(GPIOD,GPIO_Pin_13);
 			GPIO_ResetBits(GPIOD,GPIO_Pin_14);
 			GPIO_ResetBits(GPIOD,GPIO_Pin_15);
-			
+			ResetPID (&PID_TILT);
+			ResetPID (&PID_VELO);
 		}
 	}
 }
+
 void Delay(uint32_t nCount)
 {
   nCount = 42000 *nCount;
@@ -222,14 +237,14 @@ void PWM (PWM_STRUCT *S)
 	}
 	if (S->PWM>0)																								//Forward
 			{
-				S->duty = (uint16_t)(S->PWM *16800);
+				S->duty = (uint16_t)(DUTY_OFFSET+ S->PWM *(16800-DUTY_OFFSET));
 				
 				func1(TIM4,S->duty);
 				func2(TIM4,0);
 			}
 	else if (S->PWM<0)																					//Reverse
 			{
-				S->duty = (uint16_t)(-S->PWM*16800);
+				S->duty = (uint16_t)(-DUTY_OFFSET-S->PWM*(16800-DUTY_OFFSET));
 		
 				func1(TIM4,0);
 				func2(TIM4,S->duty);

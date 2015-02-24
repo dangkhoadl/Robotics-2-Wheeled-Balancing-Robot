@@ -40,7 +40,9 @@ PWM
 #define f_s				 	100.0f				 //Sampling rate = 1/dt						
 #define MAX_TILT  	20.0f
 #define MAX_VELO   	300.0f
-#define MAX_TURN    100.0f
+//#define MAX_TURN    100.0f
+#define TURN_OFFSET	0.05f
+#define DUTY_OFFSET	0
 
 /************************Global variables ----------------------------------------------------------*/
 
@@ -99,9 +101,13 @@ const		float   maxVal;
 				float   U[2];
 				float		filted_U[2];
 	} PID_STRUCT;
-	PID_STRUCT PID_VELO 	= {0.8,1.55,0.0001,0,0,0,0,0,MAX_VELO,{0,0,0},{0,0},{0,0}};
-	PID_STRUCT PID_TILT		= {5,1.2,0.2,0,0,0,0,0,MAX_TILT,{0,0,0},{0,0},{0,0}};
-	PID_STRUCT PID_TURN   = {0,0,0,0,0,0,0,0,MAX_TURN,{0,0,0},{0,0},{0,0}};
+	PID_STRUCT PID_VELO 	= {2.8,2.6,0.01,0,0,0,0,0,MAX_VELO,{0,0,0},{0,0},{0,0}};
+	PID_STRUCT PID_TILT		= {5,5.5,0.4,0,0,0,0,0,MAX_TILT,{0,0,0},{0,0},{0,0}};
+	//PID_STRUCT PID_TURN   = {0,0,0,0,0,0,0,0,MAX_TURN,{0,0,0},{0,0},{0,0}};
+	//Turning
+	float setspeed=0;
+	float setpoint=0;
+	float	U_offset=0;
 		
 	//PWM	
 	typedef enum
@@ -120,11 +126,12 @@ const		float   maxVal;
 	PWM_STRUCT	Left_motor  = {0,0,0,LEFT};
 	PWM_STRUCT	Right_motor = {0,0,0,RIGHT};
 	
+	
 /* Systick */
 uint16_t SysTicker = 0;
 void SEND_UART (uint16_t time);
 void MAIN_PROG (uint16_t time);
-	
+
 /* Subroutines */
 void RPM (WHEEL_ENCODER_STRUCT *S);
 void PID (PID_STRUCT *S,float LPFGain);
