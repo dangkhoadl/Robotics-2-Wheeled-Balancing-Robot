@@ -39,7 +39,8 @@ PWM
 #define dt 				 	0.010f          //Sampling Interval
 #define f_s				 	100.0f				 //Sampling rate = 1/dt						
 #define MAX_TILT  	20.0f
-#define MAX_VELO   	300.0f
+#define MAX_VELO   	200.0f
+#define MAX_POSI   	1.0f
 //#define MAX_TURN    100.0f
 #define TURN_OFFSET	0.05f
 #define DUTY_OFFSET	0
@@ -64,23 +65,26 @@ PWM
 		const	  float theta_offset;
 	} THETA_STRUCT;
 	THETA_STRUCT  Pitch =  {0,{0,0},-2.24f};
-	THETA_STRUCT	Yaw   =  {0,{0,0},0};
+	//THETA_STRUCT	Yaw   =  {0,{0,0},0};
 
 	//Encoder
 	typedef struct 
 	{
 		float 			 velo_fb;
+		float				 posi_fb;
 		int16_t 		 temp[2],
 								 diff;
 		TIM_TypeDef* timer;
 	} WHEEL_ENCODER_STRUCT; 
-	WHEEL_ENCODER_STRUCT 	 	 Left = {0,{0,0},0,TIM3};
-	WHEEL_ENCODER_STRUCT		 Right= {0,{0,0},0,TIM5};
+	WHEEL_ENCODER_STRUCT 	 	 Left = {0,0,{0,0},0,TIM3};
+	WHEEL_ENCODER_STRUCT		 Right= {0,0,{0,0},0,TIM5};
 	
 	typedef struct
 	{
-		float raw;
-		float filted[2];
+		float velo_raw;
+		float posi_raw;
+		float velo_filted[2];
+		float posi_filted[2];
 	}VELO_STRUCT;
 	VELO_STRUCT Linear;
 //	VELO_STRUCT Angular;
@@ -101,12 +105,14 @@ const		float   maxVal;
 				float   U[2];
 				float		filted_U[2];
 	} PID_STRUCT;
-	PID_STRUCT PID_VELO 	= {2.8,2.6,0.01,0,0,0,0,0,MAX_VELO,{0,0,0},{0,0},{0,0}};
-	PID_STRUCT PID_TILT		= {5,5.5,0.4,0,0,0,0,0,MAX_TILT,{0,0,0},{0,0},{0,0}};
-	//PID_STRUCT PID_TURN   = {0,0,0,0,0,0,0,0,MAX_TURN,{0,0,0},{0,0},{0,0}};
+	PID_STRUCT PID_POSI   		= {0.5,0.02,0,0,0,0,0,0,MAX_POSI,{0,0,0},{0,0},{0,0}};
+	PID_STRUCT PID_VELO_HOLD 	= {1.55,0.15,0,0,0,0,0,0,MAX_VELO,{0,0,0},{0,0},{0,0}};
+	PID_STRUCT PID_VELO_RUN 	= {1.55,0.15,0,0,0,0,0,0,MAX_VELO,{0,0,0},{0,0},{0,0}};
+	PID_STRUCT PID_TILT				= {10,2.9,0.4,0,0,0,0,0,MAX_TILT,{0,0,0},{0,0},{0,0}};
+	
 	//Turning
 	float setspeed=0;
-	float setpoint=0;
+	float setturn=0;
 	float	U_offset=0;
 		
 	//PWM	
@@ -133,7 +139,7 @@ void SEND_UART (uint16_t time);
 void MAIN_PROG (uint16_t time);
 
 /* Subroutines */
-void RPM (WHEEL_ENCODER_STRUCT *S);
+void ENC_PROCESSING (WHEEL_ENCODER_STRUCT *S);
 void PID (PID_STRUCT *S,float LPFGain);
 void PWM (PWM_STRUCT *S);
 		void (*func1 ) (TIM_TypeDef* TIMx,uint32_t Compare1);

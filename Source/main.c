@@ -40,14 +40,14 @@ void USART2_IRQHandler(void)
 					memcpy(&rx_data,&rxbuffer[i+2],4);
 					switch (rxbuffer[i+1])
 					{
-						case 0xE0:PID_VELO.Kp = (float)rx_data;break;
-						case 0xE1:PID_VELO.Ki = (float)rx_data;break;
-						case 0xE2:PID_VELO.Kd = (float)rx_data;break;
+						case 0xE0:PID_VELO_HOLD.Kp = (float)rx_data;break;
+						case 0xE1:PID_VELO_HOLD.Ki = (float)rx_data;break;
+						case 0xE2:PID_VELO_HOLD.Kd = (float)rx_data;break;
 						case 0xE3:PID_TILT.Kp = (float)rx_data;break;
 						case 0xE4:PID_TILT.Ki = (float)rx_data;break;
 						case 0xE5:PID_TILT.Kd = (float)rx_data;break;
 						case 0xE6:setspeed = (float)rx_data;break;
-						case 0xE7:setpoint = (float)rx_data;break;
+						case 0xE7:setturn = (float)rx_data;break;
 					}
 				}
 			}
@@ -60,7 +60,7 @@ void SysTick_Handler(void)
 	SysTicker ++;
 	
   MAIN_PROG (10);
-	SEND_UART (99);
+	SEND_UART (101);
 }
 
 uint16_t GetTicker(void)
@@ -75,8 +75,8 @@ void SEND_UART (uint16_t time)
 	{
 		ticker = GetTicker();
 		
-		SENDDATA(PID_VELO.set_point,txbuffer,0);
-		SENDDATA(PID_VELO.feedback,txbuffer,1);
+		SENDDATA(PID_VELO_HOLD.set_point,txbuffer,0);
+		SENDDATA(PID_VELO_HOLD.feedback,txbuffer,1);
 		SENDDATA(PID_TILT.set_point,txbuffer,2);
 		SENDDATA(PID_TILT.feedback,txbuffer,3);
 		SENDDATA(Left_motor.U0_100,txbuffer,4);
@@ -92,12 +92,17 @@ void MAIN_PROG (uint16_t time)
 		ticker = GetTicker();
 		
 		//Encoder section
-		RPM (&Left);
-		RPM (&Right);
+		ENC_PROCESSING (&Left);
+		ENC_PROCESSING (&Right);
 	
-		Linear.raw = (Left.velo_fb - Right.velo_fb)/ 2.0f;
-		Smooth_filter (Linear.raw,Linear.filted,0.1);
-		PID_VELO.feedback = Linear.filted[0];
+		Linear.velo_raw = (Left.velo_fb - Right.velo_fb)/ 2.0f;
+		Smooth_filter (Linear.velo_raw,Linear.velo_filted,0.1);
+		PID_VELO_RUN.feedback = Linear.velo_filted[0];
+		PID_VELO_HOLD.feedback = Linear.velo_filted[0];
+		
+		Linear.posi_raw = (Left.posi_fb - Right.posi_fb)/ 2.0f;
+		Smooth_filter (Linear.posi_raw,Linear.posi_filted,0.1);
+		PID_POSI.feedback = Linear.posi_filted[0];
 		
 		/*MPU 1*/
 		/* Read all data */
@@ -120,31 +125,43 @@ void MAIN_PROG (uint16_t time)
 		if ((PID_TILT.feedback < 45) && (PID_TILT.feedback > -45))
 		{
 			//Preprocessing
-			if ((setspeed-PID_VELO.set_point) > 0)
+			if ((setspeed-PID_VELO_RUN.set_point) > 0)
 			{
-				PID_VELO.set_point += 0.5f;
+				PID_VELO_RUN.set_point += 0.5f;
 			}
 			
-			if ((setspeed-PID_VELO.set_point) < 0)
+			if ((setspeed-PID_VELO_RUN.set_point) < 0)
 			{
-				PID_VELO.set_point -= 0.5f;
+				PID_VELO_RUN.set_point -= 0.5f;
 			}
-		
-			//PID VELOCITY
-			PID (&PID_VELO,0.34);
-			PID_TILT.set_point = -PID_VELO.filted_U[0] * MAX_TILT;
-		
+			
+			if (PID_VELO_RUN.set_point == 0)
+			{
+				//PID POSITION
+				PID (&PID_POSI,0.34);
+				PID_VELO_HOLD.set_point = PID_POSI.filted_U[0] * MAX_VELO;
+				
+				//PID VELOCITY
+				PID (&PID_VELO_HOLD,0.34);
+				PID_TILT.set_point = -PID_VELO_HOLD.filted_U[0] * MAX_TILT;
+			}
+			else
+			{
+				//PID VELOCITY
+				PID (&PID_VELO_RUN,0.34);
+				PID_TILT.set_point = -PID_VELO_RUN.filted_U[0] * MAX_TILT;
+			}
+			
 			//PID TILTING	
 			PID (&PID_TILT,0.36);
-		
+			
 			//Turning	
 			//PID (&PID_TURN,0.12);
-			U_offset = -setpoint*TURN_OFFSET;
-			
+			U_offset = -setturn*TURN_OFFSET;
 			
 			//FUSION 
-			Left_motor.PWM  = PID_TILT.filted_U[0] + U_offset;
-			Right_motor.PWM = PID_TILT.filted_U[0] - U_offset;
+			Left_motor.PWM  = PID_TILT.filted_U[0]  + U_offset;
+			Right_motor.PWM = PID_TILT.filted_U[0]  - U_offset;
 				
 			//PWM section
 			PWM (&Left_motor);
@@ -161,7 +178,9 @@ void MAIN_PROG (uint16_t time)
 			GPIO_ResetBits(GPIOD,GPIO_Pin_14);
 			GPIO_ResetBits(GPIOD,GPIO_Pin_15);
 			ResetPID (&PID_TILT);
-			ResetPID (&PID_VELO);
+			ResetPID (&PID_VELO_HOLD);
+			ResetPID (&PID_VELO_RUN);
+			ResetPID (&PID_POSI);
 		}
 	}
 }
@@ -211,7 +230,7 @@ void PID (PID_STRUCT *S,float LPFGain)
 		
 }
 
-void RPM (WHEEL_ENCODER_STRUCT *S)
+void ENC_PROCESSING (WHEEL_ENCODER_STRUCT *S)
 {
 		S->temp[1] = S->temp[0];
 		S->temp[0] = EncoderValue(S->timer);
@@ -220,7 +239,8 @@ void RPM (WHEEL_ENCODER_STRUCT *S)
 		if (S->diff> 10000) S->diff=(S->temp[0]-0xFFFF)+(S->temp[1]);//overflow while counting down
 		if (S->diff<-10000) S->diff=(0xFFFF-S->temp[1])+(S->temp[0]);//overflow while counting up
 		
-		S->velo_fb = (float)S->diff*(f_s)*60.0f/28056.0f;		// RPM = (pulse/28056/dt)*60 // encoder 334 pulses per round*4*21 (gear21)= 28056
+		S->velo_fb  =  (float)S->diff*(f_s)*60.0f/28056.0f;		// RPM = (pulse/28056/dt)*60 // encoder 334 pulses per round*4*21 (gear21)= 28056
+		S->posi_fb  =  S->temp[0]/28056.0f; //round
 }
 
 void PWM (PWM_STRUCT *S)
@@ -251,16 +271,20 @@ void PWM (PWM_STRUCT *S)
 			}
 			else 
 			{
-				TIM_SetCompare1(TIM4,0);
-				TIM_SetCompare2(TIM4,0);
-				TIM_SetCompare3(TIM4,0);
-				TIM_SetCompare4(TIM4,0);
+				func1(TIM4,0);
+				func2(TIM4,0);
 			}
 		S->U0_100 = S->PWM * 100; 
 }
 
 void ResetPID (PID_STRUCT *S)
 {
-		/* Clear the state buffer.  The size will be always 3 samples */
-		memset(S->e, 0, 3u * sizeof(float));
+		int i;
+		for (i=0;i<=2;i++)
+		{
+			S->e[i] = 0;
+		}
+		S->P_Part = 0;
+		S->I_Part = 0;
+		S->D_Part = 0;
 }

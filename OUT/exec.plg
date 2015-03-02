@@ -10,22 +10,7 @@ Project File Date:  02/22/2015
 Build target 'Source'
 compiling main.c...
 linking...
-Program Size: Code=17284 RO-data=496 RW-data=312 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17308 RO-data=496 RW-data=312 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17308 RO-data=496 RW-data=312 ZI-data=1776  
+Program Size: Code=17296 RO-data=496 RW-data=388 ZI-data=1788  
 ".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
 Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
 Erase Done.
@@ -34,7 +19,7 @@ Verify OK.
 Build target 'Source'
 compiling main.c...
 linking...
-Program Size: Code=17316 RO-data=496 RW-data=312 ZI-data=1776  
+Program Size: Code=17288 RO-data=496 RW-data=388 ZI-data=1788  
 ".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
 Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
 Erase Done.
@@ -43,7 +28,40 @@ Verify OK.
 Build target 'Source'
 compiling main.c...
 linking...
-Program Size: Code=17316 RO-data=496 RW-data=312 ZI-data=1776  
+Program Size: Code=17344 RO-data=496 RW-data=388 ZI-data=1788  
+".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
+Build target 'Source'
+compiling main.c...
+linking...
+Program Size: Code=17344 RO-data=496 RW-data=388 ZI-data=1788  
+".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
+Build target 'Source'
+compiling main.c...
+Source\main.c(43): error:  #20: identifier "PID_VELO" is undefined
+Source\main.c(78): error:  #20: identifier "PID_VELO" is undefined
+Source\main.c(100): error:  #20: identifier "PID_VELO" is undefined
+".\OUT\exec.axf" - 3 Errors, 0 Warning(s).
+Target not created
+Build target 'Source'
+compiling main.c...
+Source\main.c(78): error:  #20: identifier "PID_VELO" is undefined
+Source\main.c(100): error:  #20: identifier "PID_VELO" is undefined
+".\OUT\exec.axf" - 2 Errors, 0 Warning(s).
+Target not created
+Build target 'Source'
+compiling main.c...
+Source\main.c(100): error:  #20: identifier "PID_VELO" is undefined
+".\OUT\exec.axf" - 1 Errors, 0 Warning(s).
+Target not created
+Build target 'Source'
+compiling main.c...
+Source\main.c(181): error:  #20: identifier "PID_VELO" is undefined
+".\OUT\exec.axf" - 1 Errors, 0 Warning(s).
+Target not created
+Build target 'Source'
+compiling main.c...
+linking...
+Program Size: Code=17420 RO-data=496 RW-data=452 ZI-data=1788  
 ".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
 Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
 Erase Done.
@@ -52,7 +70,7 @@ Verify OK.
 Build target 'Source'
 compiling main.c...
 linking...
-Program Size: Code=17316 RO-data=496 RW-data=312 ZI-data=1776  
+Program Size: Code=17416 RO-data=496 RW-data=452 ZI-data=1788  
 ".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
 Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
 Erase Done.
@@ -61,7 +79,7 @@ Verify OK.
 Build target 'Source'
 compiling main.c...
 linking...
-Program Size: Code=17312 RO-data=496 RW-data=312 ZI-data=1776  
+Program Size: Code=17420 RO-data=496 RW-data=452 ZI-data=1788  
 ".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
 Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
 Erase Done.
@@ -70,7 +88,7 @@ Verify OK.
 Build target 'Source'
 compiling main.c...
 linking...
-Program Size: Code=17312 RO-data=496 RW-data=312 ZI-data=1776  
+Program Size: Code=17420 RO-data=496 RW-data=452 ZI-data=1788  
 ".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
 Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
 Erase Done.
@@ -79,7 +97,7 @@ Verify OK.
 Build target 'Source'
 compiling main.c...
 linking...
-Program Size: Code=17308 RO-data=496 RW-data=312 ZI-data=1776  
+Program Size: Code=17420 RO-data=496 RW-data=452 ZI-data=1788  
 ".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
 Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
 Erase Done.
@@ -88,7 +106,7 @@ Verify OK.
 Build target 'Source'
 compiling main.c...
 linking...
-Program Size: Code=17308 RO-data=496 RW-data=312 ZI-data=1776  
+Program Size: Code=17420 RO-data=496 RW-data=452 ZI-data=1788  
 ".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
 Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
 Erase Done.
@@ -97,157 +115,34 @@ Verify OK.
 Build target 'Source'
 compiling main.c...
 linking...
-Program Size: Code=17308 RO-data=496 RW-data=312 ZI-data=1776  
+Program Size: Code=17420 RO-data=496 RW-data=452 ZI-data=1788  
 ".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
 Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
 Erase Done.
 Programming Done.
 Verify OK.
-Build target 'Source'
+Rebuild target 'Source'
+assembling startup_stm32f4xx.s...
+compiling tm_stm32f4_i2c.c...
+compiling tm_stm32f4_mpu6050.c...
 compiling main.c...
+compiling UART_DMA.c...
+compiling PWM.c...
+compiling Encoder.c...
+compiling filter.c...
+compiling matrix.c...
+Source\matrix.c(84): warning: C4017W: factor may be used before being set
+compiling misc.c...
+compiling stm32f4xx_dma.c...
+compiling stm32f4xx_exti.c...
+compiling stm32f4xx_gpio.c...
+compiling stm32f4xx_rcc.c...
+compiling stm32f4xx_syscfg.c...
+compiling stm32f4xx_tim.c...
+compiling stm32f4xx_usart.c...
+compiling stm32f4xx_adc.c...
+compiling stm32f4xx_i2c.c...
+compiling system_stm32f4xx.c...
 linking...
-Program Size: Code=17308 RO-data=496 RW-data=312 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17300 RO-data=496 RW-data=312 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17304 RO-data=496 RW-data=312 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17304 RO-data=496 RW-data=312 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17304 RO-data=496 RW-data=312 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17304 RO-data=496 RW-data=312 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17304 RO-data=496 RW-data=312 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17304 RO-data=496 RW-data=312 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17400 RO-data=496 RW-data=320 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17392 RO-data=496 RW-data=320 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17384 RO-data=496 RW-data=320 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17380 RO-data=496 RW-data=320 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-Source\main.c(126): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-Source\main.c(131): warning:  #1035-D: single-precision operand implicitly converted to double-precision
-linking...
-Program Size: Code=17400 RO-data=496 RW-data=320 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 2 Warning(s).
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17400 RO-data=496 RW-data=320 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17400 RO-data=496 RW-data=320 ZI-data=1776  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17348 RO-data=496 RW-data=316 ZI-data=1772  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17348 RO-data=496 RW-data=316 ZI-data=1772  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
-Build target 'Source'
-compiling main.c...
-linking...
-Program Size: Code=17348 RO-data=496 RW-data=316 ZI-data=1772  
-".\OUT\exec.axf" - 0 Errors, 0 Warning(s).
-Load "E:\\Dai hoc\\Engineering Softwares\\STM32F4\\projects\\MyProject_F4_2wheelbalancingrobot\\OUT\\exec.axf" 
-Erase Done.
-Programming Done.
-Verify OK.
+Program Size: Code=17420 RO-data=496 RW-data=452 ZI-data=1788  
+".\OUT\exec.axf" - 0 Errors, 1 Warning(s).

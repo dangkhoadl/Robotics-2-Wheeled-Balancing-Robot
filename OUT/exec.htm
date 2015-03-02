@@ -3,7 +3,7 @@
 <title>Static Call Graph - [.\OUT\exec.axf]</title></head>
 <body><HR>
 <H1>Static Call Graph for image .\OUT\exec.axf</H1><HR>
-<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Tue Feb 24 16:19:20 2015
+<BR><P>#&#060CALLGRAPH&#062# ARM Linker, 5.03 [Build 76]: Last Updated: Mon Mar 02 16:59:10 2015
 <BR><P>
 <H3>Maximum Stack Usage =        168 bytes + Unknown(Functions without stacksize, Cycles, Untraceable Function Pointers)</H3><H3>
 Call chain for Maximum Stack Depth:</H3>
@@ -758,7 +758,7 @@ Global Symbols
 </UL>
 <BR>[Calls]<UL><LI><a href="#[95]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_I2C_ReadMulti
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
+<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
 </UL>
 
 <P><STRONG><a name="[114]"></a>Delay</STRONG> (Thumb, 28 bytes, Stack size 0 bytes, main.o(.text), UNUSED)
@@ -788,45 +788,44 @@ Global Symbols
 <BR><BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SENDDATA
 </UL>
 
-<P><STRONG><a name="[115]"></a>ResetPID</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, main.o(.text), UNUSED)
+<P><STRONG><a name="[115]"></a>ResetPID</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, main.o(.text), UNUSED)
 
-<P><STRONG><a name="[a7]"></a>PWM</STRONG> (Thumb, 180 bytes, Stack size 16 bytes, main.o(.text))
+<P><STRONG><a name="[ad]"></a>PWM</STRONG> (Thumb, 164 bytes, Stack size 16 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = PWM
 </UL>
-<BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare4
-<LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
-<LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
-<LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare1
-</UL>
-<BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
+<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
 </UL>
 
-<P><STRONG><a name="[a8]"></a>PID</STRONG> (Thumb, 250 bytes, Stack size 8 bytes, main.o(.text))
+<P><STRONG><a name="[a7]"></a>PID</STRONG> (Thumb, 250 bytes, Stack size 8 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = PID
 </UL>
-<BR>[Calls]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Smooth_filter
+<BR>[Calls]<UL><LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Smooth_filter
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
-</UL>
-
-<P><STRONG><a name="[aa]"></a>RPM</STRONG> (Thumb, 102 bytes, Stack size 8 bytes, main.o(.text), UNUSED)
-<BR><BR>[Calls]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EncoderValue
+<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
 </UL>
 
-<P><STRONG><a name="[ac]"></a>MAIN_PROG</STRONG> (Thumb, 742 bytes, Stack size 40 bytes, main.o(.text))
+<P><STRONG><a name="[a9]"></a>ENC_PROCESSING</STRONG> (Thumb, 118 bytes, Stack size 8 bytes, main.o(.text))
+<BR><BR>[Stack]<UL><LI>Max Depth = 8<LI>Call Chain = ENC_PROCESSING
+</UL>
+<BR>[Calls]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EncoderValue
+</UL>
+<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
+</UL>
+
+<P><STRONG><a name="[ab]"></a>MAIN_PROG</STRONG> (Thumb, 796 bytes, Stack size 40 bytes, main.o(.text))
 <BR><BR>[Stack]<UL><LI>Max Depth = 152<LI>Call Chain = MAIN_PROG &rArr; TM_MPU6050_ReadAll &rArr; TM_I2C_ReadMulti &rArr; TM_I2C_Start &rArr; I2C_GetFlagStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[68]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare4
 <LI><a href="#[66]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare3
 <LI><a href="#[67]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare2
 <LI><a href="#[65]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_SetCompare1
-<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Smooth_filter
+<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;Smooth_filter
 <LI><a href="#[ae]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;GPIO_ResetBits
-<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EncoderValue
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM
+<LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_PROCESSING
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
+<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM
 <LI><a href="#[9d]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TM_MPU6050_ReadAll
-<LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
+<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
 </UL>
 <BR>[Called By]<UL><LI><a href="#[10]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SysTick_Handler
 </UL>
@@ -835,7 +834,7 @@ Global Symbols
 <BR><BR>[Stack]<UL><LI>Max Depth = 160<LI>Call Chain = SysTick_Handler &rArr; MAIN_PROG &rArr; TM_MPU6050_ReadAll &rArr; TM_I2C_ReadMulti &rArr; TM_I2C_Start &rArr; I2C_GetFlagStatus
 </UL>
 <BR>[Calls]<UL><LI><a href="#[a6]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;SENDDATA
-<LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
+<LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> startup_stm32f4xx.o(RESET)
 </UL>
@@ -936,11 +935,10 @@ Global Symbols
 <BR>[Called By]<UL><LI><a href="#[76]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;main
 </UL>
 
-<P><STRONG><a name="[ab]"></a>EncoderValue</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, encoder.o(.text))
+<P><STRONG><a name="[aa]"></a>EncoderValue</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, encoder.o(.text))
 <BR><BR>[Calls]<UL><LI><a href="#[cd]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;TIM_GetCounter
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
-<LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;RPM
+<BR>[Called By]<UL><LI><a href="#[a9]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;ENC_PROCESSING
 </UL>
 
 <P><STRONG><a name="[117]"></a>LPF</STRONG> (Thumb, 60 bytes, Stack size 0 bytes, filter.o(.text), UNUSED)
@@ -957,9 +955,9 @@ Global Symbols
 <LI><a href="#[d1]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;matrix_addition
 </UL>
 
-<P><STRONG><a name="[a9]"></a>Smooth_filter</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, filter.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
-<LI><a href="#[a8]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
+<P><STRONG><a name="[a8]"></a>Smooth_filter</STRONG> (Thumb, 30 bytes, Stack size 0 bytes, filter.o(.text))
+<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
+<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PID
 </UL>
 
 <P><STRONG><a name="[d0]"></a>matrix_multiply</STRONG> (Thumb, 186 bytes, Stack size 52 bytes, matrix.o(.text), UNUSED)
@@ -1089,7 +1087,7 @@ Global Symbols
 <P><STRONG><a name="[132]"></a>GPIO_SetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text), UNUSED)
 
 <P><STRONG><a name="[ae]"></a>GPIO_ResetBits</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
+<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
 </UL>
 
 <P><STRONG><a name="[133]"></a>GPIO_WriteBit</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, stm32f4xx_gpio.o(.text), UNUSED)
@@ -1249,7 +1247,7 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[cd]"></a>TIM_GetCounter</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EncoderValue
+<BR><BR>[Called By]<UL><LI><a href="#[aa]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;EncoderValue
 </UL>
 
 <P><STRONG><a name="[15f]"></a>TIM_GetPrescaler</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text), UNUSED)
@@ -1300,26 +1298,22 @@ Global Symbols
 <P><STRONG><a name="[165]"></a>TIM_SelectOCxM</STRONG> (Thumb, 92 bytes, Stack size 4 bytes, stm32f4xx_tim.o(.text), UNUSED)
 
 <P><STRONG><a name="[65]"></a>TIM_SetCompare1</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM
+<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
 <P><STRONG><a name="[67]"></a>TIM_SetCompare2</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM
+<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
 <P><STRONG><a name="[66]"></a>TIM_SetCompare3</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM
+<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
 <P><STRONG><a name="[68]"></a>TIM_SetCompare4</STRONG> (Thumb, 4 bytes, Stack size 0 bytes, stm32f4xx_tim.o(.text))
-<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
-<LI><a href="#[a7]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;PWM
+<BR><BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
 </UL>
 <BR>[Address Reference Count : 1]<UL><LI> main.o(.text)
 </UL>
@@ -1854,20 +1848,20 @@ Global Symbols
 </UL>
 
 <P><STRONG><a name="[ef]"></a>__ARM_fpclassifyf</STRONG> (Thumb, 38 bytes, Stack size 0 bytes, fpclassifyf.o(i.__ARM_fpclassifyf))
-<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
+<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
 </UL>
 
-<P><STRONG><a name="[ad]"></a>__hardfp_atan2f</STRONG> (Thumb, 486 bytes, Stack size 16 bytes, atan2f.o(i.__hardfp_atan2f))
+<P><STRONG><a name="[ac]"></a>__hardfp_atan2f</STRONG> (Thumb, 486 bytes, Stack size 16 bytes, atan2f.o(i.__hardfp_atan2f))
 <BR><BR>[Stack]<UL><LI>Max Depth = 16<LI>Call Chain = __hardfp_atan2f
 </UL>
 <BR>[Calls]<UL><LI><a href="#[f0]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__mathlib_flt_underflow
 <LI><a href="#[ef]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__ARM_fpclassifyf
 </UL>
-<BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
+<BR>[Called By]<UL><LI><a href="#[ab]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;MAIN_PROG
 </UL>
 
 <P><STRONG><a name="[f0]"></a>__mathlib_flt_underflow</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, funder.o(i.__mathlib_flt_underflow))
-<BR><BR>[Called By]<UL><LI><a href="#[ad]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
+<BR><BR>[Called By]<UL><LI><a href="#[ac]">&gt;&gt;</a>&nbsp;&nbsp;&nbsp;__hardfp_atan2f
 </UL>
 
 <P><STRONG><a name="[6e]"></a>_fp_init</STRONG> (Thumb, 10 bytes, Stack size 0 bytes, fpinit.o(x$fpl$fpinit))

@@ -151,17 +151,17 @@
         <Ww>
           <count>0</count>
           <WinNumber>1</WinNumber>
-          <ItemText>duty,0x0A</ItemText>
+          <ItemText>TM_I2C_Timeout,0x0A</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>1</WinNumber>
-          <ItemText>U0_100</ItemText>
+          <ItemText>Left.velo_fb</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>1</WinNumber>
-          <ItemText>TM_I2C_Timeout,0x0A</ItemText>
+          <ItemText>Right.velo_fb</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
@@ -176,34 +176,44 @@
         <Ww>
           <count>5</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Left.velo_fb</ItemText>
+          <ItemText>Left.posi_fb</ItemText>
         </Ww>
         <Ww>
           <count>6</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Right.velo_fb</ItemText>
+          <ItemText>Right.posi_fb</ItemText>
         </Ww>
         <Ww>
           <count>7</count>
           <WinNumber>1</WinNumber>
-          <ItemText>Yaw.raw</ItemText>
+          <ItemText>PID_POSI.feedback</ItemText>
+        </Ww>
+        <Ww>
+          <count>8</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>PID_POSI.set_point</ItemText>
+        </Ww>
+        <Ww>
+          <count>9</count>
+          <WinNumber>1</WinNumber>
+          <ItemText>rxbuffer</ItemText>
         </Ww>
       </WatchWindow1>
       <WatchWindow2>
         <Ww>
           <count>0</count>
           <WinNumber>2</WinNumber>
-          <ItemText>PID_VELO</ItemText>
+          <ItemText>PID_TILT</ItemText>
         </Ww>
         <Ww>
           <count>1</count>
           <WinNumber>2</WinNumber>
-          <ItemText>PID_TILT</ItemText>
+          <ItemText>Left_motor</ItemText>
         </Ww>
         <Ww>
           <count>2</count>
           <WinNumber>2</WinNumber>
-          <ItemText>Left_motor</ItemText>
+          <ItemText>PID_POSI</ItemText>
         </Ww>
         <Ww>
           <count>3</count>
@@ -213,12 +223,17 @@
         <Ww>
           <count>4</count>
           <WinNumber>2</WinNumber>
-          <ItemText>U_offset</ItemText>
+          <ItemText>PID_VELO_HOLD</ItemText>
         </Ww>
         <Ww>
           <count>5</count>
           <WinNumber>2</WinNumber>
-          <ItemText>setpoint</ItemText>
+          <ItemText>PID_VELO_RUN</ItemText>
+        </Ww>
+        <Ww>
+          <count>6</count>
+          <WinNumber>2</WinNumber>
+          <ItemText>PID_VELO_RUN.set_point</ItemText>
         </Ww>
       </WatchWindow2>
       <Tracepoint>
@@ -473,10 +488,10 @@
       <FileType>1</FileType>
       <tvExp>0</tvExp>
       <Focus>0</Focus>
-      <ColumnNumber>18</ColumnNumber>
+      <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>133</TopLine>
-      <CurrentLine>142</CurrentLine>
+      <TopLine>21</TopLine>
+      <CurrentLine>22</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Source\main.c</PathWithFileName>
       <FilenameWithoutPath>main.c</FilenameWithoutPath>
@@ -555,8 +570,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>0</TopLine>
-      <CurrentLine>0</CurrentLine>
+      <TopLine>80</TopLine>
+      <CurrentLine>84</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\Source\matrix.c</PathWithFileName>
       <FilenameWithoutPath>matrix.c</FilenameWithoutPath>
@@ -691,8 +706,8 @@
       <Focus>0</Focus>
       <ColumnNumber>0</ColumnNumber>
       <tvExpOptDlg>0</tvExpOptDlg>
-      <TopLine>1269</TopLine>
-      <CurrentLine>1273</CurrentLine>
+      <TopLine>1284</TopLine>
+      <CurrentLine>1285</CurrentLine>
       <bDave2>0</bDave2>
       <PathWithFileName>.\lib_sys\src\stm32f4xx_usart.c</PathWithFileName>
       <FilenameWithoutPath>stm32f4xx_usart.c</FilenameWithoutPath>

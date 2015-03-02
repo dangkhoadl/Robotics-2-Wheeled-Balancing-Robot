@@ -1,7 +1,7 @@
 Dependencies for Project 'F4_GPIO', Target 'Source': (DO NOT MODIFY !)
 F (.\MDK_ARM\startup_stm32f4xx.s)(0x4F5469D8)(--cpu Cortex-M4.fp -g --apcs=interwork -I "E:\Program Files\Keil\ARM\RV31\INC"-I "E:\Program Files\Keil\ARM\CMSIS\Include"-I "E:\Program Files\Keil\ARM\Inc\ST\STM32F4xx"--list .\out\startup_stm32f4xx.lst --xref -o .\out\startup_stm32f4xx.o --depend .\out\startup_stm32f4xx.d)
 F (.\Source\Encoder.h)(0x54E83704)()
-F (.\Source\main.h)(0x54E99F1D)()
+F (.\Source\main.h)(0x54F19F92)()
 F (.\Source\PWM.h)(0x54E6883E)()
 F (.\Source\tm_stm32f4_i2c.h)(0x54E68026)()
 F (.\Source\tm_stm32f4_mpu6050.h)(0x54E683A1)()
@@ -81,8 +81,8 @@ I (E:\Dai hoc\Engineering Softwares\STM32F4\projects\MyProject_F4_2wheelbalancin
 I (E:\Dai hoc\Engineering Softwares\STM32F4\projects\MyProject_F4_2wheelbalancingrobot\lib_sys\inc\stm32f4xx_wwdg.h)(0x4EAA220A)
 I (E:\Dai hoc\Engineering Softwares\STM32F4\projects\MyProject_F4_2wheelbalancingrobot\lib_sys\inc\misc.h)(0x4EAA220A)
 I (E:\Dai hoc\Engineering Softwares\STM32F4\projects\MyProject_F4_2wheelbalancingrobot\Source\tm_stm32f4_i2c.h)(0x54E68026)
-F (.\Source\main.c)(0x54E9EB89)(-c --cpu Cortex-M4.fp -g -O3 -Otime --apcs=interwork -I.\STM32F4_Discovery -I.\lib_sys\inc -I.\Source-I "E:\Program Files\Keil\ARM\RV31\INC"-I "E:\Program Files\Keil\ARM\CMSIS\Include"-I "E:\Program Files\Keil\ARM\Inc\ST\STM32F4xx"-DUSE_STDPERIPH_DRIVER -DSTM32F4XX -DARM_MATH_CM4 -D__FPU_PRESENT -DSTM32F40XX-o .\out\main.o --omf_browse .\out\main.crf --depend .\out\main.d)
-I (E:\Dai hoc\Engineering Softwares\STM32F4\projects\MyProject_F4_2wheelbalancingrobot\Source\main.h)(0x54E99F1D)
+F (.\Source\main.c)(0x54F2503A)(-c --cpu Cortex-M4.fp -g -O3 -Otime --apcs=interwork -I.\STM32F4_Discovery -I.\lib_sys\inc -I.\Source-I "E:\Program Files\Keil\ARM\RV31\INC"-I "E:\Program Files\Keil\ARM\CMSIS\Include"-I "E:\Program Files\Keil\ARM\Inc\ST\STM32F4xx"-DUSE_STDPERIPH_DRIVER -DSTM32F4XX -DARM_MATH_CM4 -D__FPU_PRESENT -DSTM32F40XX-o .\out\main.o --omf_browse .\out\main.crf --depend .\out\main.d)
+I (E:\Dai hoc\Engineering Softwares\STM32F4\projects\MyProject_F4_2wheelbalancingrobot\Source\main.h)(0x54F19F92)
 I (E:\Program Files\Keil\ARM\Inc\ST\STM32F4xx\stm32f4xx.h)(0x51C7BDF8)
 I (E:\Program Files\Keil\ARM\CMSIS\Include\core_cm4.h)(0x51C7C35A)
 I (E:\Program Files\Keil\ARM\ARMCC\include\stdint.h)(0x51C7C554)
